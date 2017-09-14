@@ -8,13 +8,22 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <script type="text/paperscript" canvas="myCanvas">
 
-      
-      var myCircle = new Path.Circle(new Point(100, 70), 10);
-      myCircle.fillColor = 'black';
-      
-      var myCircle2 = new Path.Circle(new Point(50, 50), 300);
-      myCircle2.fillColor = 'purple';
-      
+    
+      function onKeyDown(event) {
+
+        //finds the max height and width of the window
+        var maxPoint = new Point(view.size.width, view.size.height)
+
+        //create a random number
+        var randomPoint = Point.random();
+
+        //make a random number according to the size of the window
+        var point = maxPoint * randomPoint;
+
+        //creates the new circle using a randomly generated point
+        new Path.Circle(new Point(point), 10).fillColor = "orange";
+      }
+        
       
     </script>
   </head>
