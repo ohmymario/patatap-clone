@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <script type="text/paperscript" canvas="myCanvas">
 
+    var circles = [];
     
       function onKeyDown(event) {
 
@@ -21,9 +22,21 @@
         var point = maxPoint * randomPoint;
 
         //creates the new circle using a randomly generated point
-        new Path.Circle(new Point(point), 10).fillColor = "orange";
+        var newCircle = new Path.Circle(new Point(point), 500)
+        newCircle.fillColor = "orange";
+        circles.push(newCircle);
       }
+
+
+      
+      function onFrame(event) {
+        for(var i = 0; i < circles.length; i++) {
+          circles[i].fillColor.hue += 1;
+          circles[i].scale(.9);
+          
+        }
         
+      } 
       
     </script>
   </head>
