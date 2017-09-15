@@ -5,13 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="paper-full.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script type="text/paperscript" canvas="myCanvas">
+      
+      var sound1 = new Howl({
+        src: ['sounds/bubbles.mp3'],
+        volume: 0.5
+      });
+
+      var sound2 = new Howl({
+        src: ['sounds/strike.mp3'],
+        volume: 0.5
+      });
+       
+      
 
     var circles = [];
     
       function onKeyDown(event) {
+        if(event.key === "a") {
+          sound1.play();
+        }
 
+        if(event.key === "s") {
+          sound2.play();
+        }
+        
         //finds the max height and width of the window
         var maxPoint = new Point(view.size.width, view.size.height)
 
@@ -27,16 +47,15 @@
         circles.push(newCircle);
       }
 
-
-      
       function onFrame(event) {
         for(var i = 0; i < circles.length; i++) {
           circles[i].fillColor.hue += 1;
-          circles[i].scale(.9);
+          circles[i].scale(.92);
           
         }
-        
       } 
+
+
       
     </script>
   </head>
