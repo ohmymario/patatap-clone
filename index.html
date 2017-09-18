@@ -24,13 +24,7 @@
     var circles = [];
     
       function onKeyDown(event) {
-        if(event.key === "a") {
-          sound1.play();
-        }
-
-        if(event.key === "s") {
-          sound2.play();
-        }
+        
         
         //finds the max height and width of the window
         var maxPoint = new Point(view.size.width, view.size.height)
@@ -43,7 +37,16 @@
 
         //creates the new circle using a randomly generated point
         var newCircle = new Path.Circle(new Point(point), 500)
-        newCircle.fillColor = "orange";
+
+        if(event.key === "a") {
+          sound1.play();
+          newCircle.fillColor = "purple";
+        } else if (event.key === "s") {
+          sound2.play();
+          newCircle.fillColor = "#16a085";
+        } else {
+          newCircle.fillColor = "orange";          
+        }
         circles.push(newCircle);
       }
 
